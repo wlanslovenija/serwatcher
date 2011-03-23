@@ -13,7 +13,7 @@
 #   iptables -I FORWARD -i tap+ -o tun+ -m comment --comment "nw-iface:peering.up"
 #   iptables -I FORWARD -i tun+ -i tap+ -m comment --comment "nw-iface:peering.down"
 #
-# You can ofcourse do something completely different as long as you use
+# You can of course do something completely different as long as you use
 # the above comment naming.
 #
 import subprocess
