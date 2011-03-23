@@ -5,6 +5,17 @@
 # to run every few minutes and redirect the output into the proper
 # location.
 #
+# Sample netfilter configuration in use on wlan slovenia:
+#
+#   iptables -I FORWARD -i tap+ -o venet0 -m comment --comment "nw-iface:internet.up"
+#   iptables -I FORWARD -i venet0 -o tap+ -m comment --comment "nw-iface:internet.down"
+#   iptables -I FORWARD -i tap+ -o tap+ -m comment --comment "nw-iface:internal."
+#   iptables -I FORWARD -i tap+ -o tun+ -m comment --comment "nw-iface:peering.up"
+#   iptables -I FORWARD -i tun+ -i tap+ -m comment --comment "nw-iface:peering.down"
+#
+# You can ofcourse do something completely different as long as you use
+# the above comment naming.
+#
 import subprocess
 
 IPTABLES_COMMENT_MARKER = 'nw-iface:'
